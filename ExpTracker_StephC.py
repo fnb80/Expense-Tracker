@@ -5,3 +5,6 @@ YELLOW = "\033[93m"
 CYAN = "\033[96m"
 BOLD = "\033[1m"
 
+def main_menu():
+  print(YELLOW+"Welcome to the Expense Tracker!"+RESET)
+  
