@@ -27,7 +27,7 @@ while True:
 
   # If the user selects 1, run addexpense()
   if choice == "1":
-    addexpense()
+    add_expense()
 
   # If the user selects 2, run view_expenses()
   elif choice == "2":
@@ -39,11 +39,11 @@ while True:
 
   # Option 4 (not your part yet)
   elif choice == "4":
-    print(YELLOW + "Calculator mode coming soon." + RESET)
+    delete_expense()
 
   # Optional exit
   elif choice.lower() == "q":
-    print(GREEN + "Goodbye!" + RESET)
+    exit_system()
     break
 
   # Handle invalid input
@@ -83,11 +83,6 @@ def addexpense():
   print(GREEN + "Expense added successfully!" + RESET)
   
   def view_expenses():
-  """
-  This function displays all expenses in a clear
-  and organized format by category.
-  """
-
   # Check if there are any expenses stored
   # If all categories are empty, show a message
   if not expenses["food"] and not expenses["transport"] and not expenses["entertainment"]:
@@ -107,5 +102,6 @@ def addexpense():
         # Display each expense with amount and date
         print(f"  - ${expense['amount']:.2f} on {expense['date']}")
   
+
 
 
