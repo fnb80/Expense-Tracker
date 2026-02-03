@@ -19,6 +19,36 @@ def main_menu():
   print ("[2] View All Expenses ")
   print ("[3] Delete an Expense ")
   print ("[4] Enter Calculator Mode")
+while True:
+ # Show the menu
+  main_menu():
+  # Ask the user to choose an option
+  choice = input(CYAN + "Select an option (1-4): " + RESET)
+
+  # If the user selects 1, run addexpense()
+  if choice == "1":
+    addexpense()
+
+  # If the user selects 2, run view_expenses()
+  elif choice == "2":
+    view_expenses()
+
+  # Option 3 (not your part yet)
+  elif choice == "3":
+    print(YELLOW + "Delete expense feature coming soon." + RESET)
+
+  # Option 4 (not your part yet)
+  elif choice == "4":
+    print(YELLOW + "Calculator mode coming soon." + RESET)
+
+  # Optional exit
+  elif choice.lower() == "q":
+    print(GREEN + "Goodbye!" + RESET)
+    break
+
+  # Handle invalid input
+  else:
+    print(RED + "Invalid option. Please choose 1-4." + RESET)
 
 def addexpense():
   # Ask the user to choose a category
@@ -77,4 +107,5 @@ def addexpense():
         # Display each expense with amount and date
         print(f"  - ${expense['amount']:.2f} on {expense['date']}")
   
+
 
