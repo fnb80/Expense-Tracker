@@ -21,6 +21,31 @@ def main_menu():
   print ("[4] Enter Calculator Mode")
   print("[q] Quit")
 
+while True:
+    # Show menu
+    main_menu()
+    # Get user choice
+ choice = input(CYAN + "Select an option (1-4 or q): " + RESET)
+
+    if choice == "1":
+        add_expense()
+
+    elif choice == "2":
+        view_expenses()
+
+    elif choice == "3":
+        calculating_total_expenses()
+
+    elif choice == "4":
+         deleting_expenses ()
+
+    elif choice.lower() == "q":
+        print(GREEN + "Goodbye!" + RESET)
+        break
+
+    else:
+        print(RED + "Invalid option. Please choose 1-4 or q." + RESET)
+
 def add_expense():
   # Ask the user to choose a category
   category = input(CYAN + "Enter category (food / transport / entertainment): " + RESET).lower()
@@ -73,6 +98,7 @@ def add_expense():
         # Display each expense with amount and date
         print(f"  - ${expense['amount']:.2f} on {expense['date']}")
   
+
 
 
 
