@@ -97,7 +97,25 @@ def add_expense():
       for expense in expense_list:
         # Display each expense with amount and date
         print(f"  - ${expense['amount']:.2f} on {expense['date']}")
-  
+
+def calculating_total_expenses():
+  user_input("please enter [food], [transport], [entertainment], or [total] to calculate).lower()
+  if user_input in expenses
+    expense_total = sum(expenses['user_input'])
+    print(f"Total for {user_input}: ${expense_total:.2f}")
+
+ elif user_input == 'total':
+    total_total = sum(sum(values) for value in expense.values)
+    print(f"Total Expenses: ${total_total:.2f}")
+
+else:
+    print ("Please input a valid category!")
+    return
+        
+                 
+def deleting_expenses():
+    
+                 
 
 
 
