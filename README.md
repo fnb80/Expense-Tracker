@@ -8,7 +8,7 @@ This is a user-friendly, operatable program that allows the user to create an ex
 To start, run the program and follow the input instructions. For example, the main program progressing buttons are **[1], [2], [3], [4],** and **[q]** on the keyboard 
 
 ## Features
-**--Add an Expense**   
+**--Add an Expense**      
 *This feature allows you to add an expense within a category such as food, transport, etc. Please ensure that you carefully type each input.*    
 **--View Expenses**  
 *This feature allows you to view every expense within each category.*      
