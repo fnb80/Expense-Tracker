@@ -5,7 +5,7 @@
 This is a user-friendly, operatable program that allows the user to create an expense tracker -- keep track of different finances such as transportation, food, and entertainment for organizing. It exists as not just a school project, but for a useful app as well.
 
 ## How to Run
-To start, run the program and follow the input instructions. For example, the main program progressing buttons are [1],[2],[3],[4], and [q] on the keyboard 
+To start, run the program and follow the input instructions. For example, the main program progressing buttons are [1], [2], [3], [4], and [q] on the keyboard 
 
 ## Features
 *--Add an Expense*
