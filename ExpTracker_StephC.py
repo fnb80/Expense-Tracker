@@ -99,9 +99,9 @@ def add_expense():
         print(f"  - ${expense['amount']:.2f} on {expense['date']}")
 
 def calculating_total_expenses():
-  user_input("please enter [food], [transport], [entertainment], or [total] to calculate).lower()
-  if user_input in expenses
-    expense_total = sum(expenses['user_input'])
+  user_input = input("please enter [food], [transport], [entertainment], or [total] to calculate).lower()
+  if user_input in expenses:
+    expense_total = sum(expenses[user_input])
     print(f"Total for {user_input}: ${expense_total:.2f}")
 
  elif user_input == 'total':
@@ -114,8 +114,29 @@ else:
         
                  
 def deleting_expenses():
-    
+    category = input("Enter [food / transport / entertainment]: ").lower()
+
+    if category not in expenses: 
+      print("Please enter a valid category!")
+      return
+
+    if not expenses[category]:
+      print("There are no expenses in this category!")
+      return
+
+    for i, expense in enumerate(expenses[category], start =1):
+            print(f"{i}. ${expense['amount']}:.2f on {expense['date']}")
+
+    try:
+      choice = int(input("Enter expense # to delete: "))
+      removed = expenses[category].pop(choice-1)
+
+    except (ValueError, IndexError):
+      print("Please enter a valid expense!")
+           
+          
                  
+
 
 
 
