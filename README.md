@@ -4,7 +4,7 @@
 ## Description
 This is a user-friendly, operatable program that allows the user to create an expense tracker -- keep track of different finances such as transportation, food, and entertainment for organizing. It exists as not just a school project, but for a useful app as well.
      
-Much of the code such as the *Add Expense, View Expense,* and *modules* were developed by Eileen Wu, while *Delete Expense, Calculating Expenses* and *README* were coded by Stephanie Cen.
+Much of the code such as the *Add Expense, View Expense,* and *modules* were developed by Eileen Wu, while *Delete Expense, Calculating Expenses* and *README* were written by Stephanie Cen.
 
 ## How to Run
 To start, run the program and follow the input instructions. For example, the main program progressing buttons are **[1], [2], [3], [4],** and **[q]** on the keyboard 
