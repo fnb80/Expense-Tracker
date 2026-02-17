@@ -1,3 +1,6 @@
+from ast import While
+
+
 RESET = "\033[0m"
 RED = "\033[91m"
 GREEN = "\033[92m"
@@ -11,40 +14,6 @@ expenses = {
   "transport": [],
   "entertainment": []
 }
-
-def main_menu():
-  print(YELLOW+"Welcome to the Expense Tracker!"+RESET)
-  print ("")
-  print ("[1] Add expense ")
-  print ("[2] View All Expenses ")
-  print ("[3] Delete an Expense ")
-  print ("[4] Enter Calculator Mode")
-  print("[q] Quit")
-
-while True:
-    # Show menu
-    main_menu()
-    # Get user choice
- choice = input(CYAN + "Select an option (1-4 or q): " + RESET)
-
-    if choice == "1":
-        add_expense()
-
-    elif choice == "2":
-        view_expenses()
-
-    elif choice == "3":
-        calculating_total_expenses()
-
-    elif choice == "4":
-         deleting_expenses ()
-
-    elif choice.lower() == "q":
-        print(GREEN + "Goodbye!" + RESET)
-        break
-
-    else:
-        print(RED + "Invalid option. Please choose 1-4 or q." + RESET)
 
 def add_expense():
   # Ask the user to choose a category
@@ -78,64 +47,106 @@ def add_expense():
   # Confirm that the expense was added successfully
   print(GREEN + "Expense added successfully!" + RESET)
   
-  def view_expenses():
+def view_expenses():
   # Check if there are any expenses stored
   # If all categories are empty, show a message
-  if not expenses["food"] and not expenses["transport"] and not expenses["entertainment"]:
-    print(YELLOW + "No expenses have been added yet." + RESET)
-    return
+    if not expenses["food"] and not expenses["transport"] and not expenses["entertainment"]:
+        print(YELLOW + "No expenses have been added yet." + RESET)
+        return
 
   # Loop through each category and its expense list
-  for category, expense_list in expenses.items():
-    print(BOLD + CYAN + f"\nCategory: {category.capitalize()}" + RESET)
+    for category, expense_list in expenses.items():
+      print(BOLD + CYAN + f"\nCategory: {category.capitalize()}" + RESET)
 
     # If the category has no expenses, let the user know
-    if not expense_list:
-      print("  No expenses in this category.")
-    else:
+      if not expense_list:
+        print("  No expenses in this category.")
+      else:
       # Loop through each expense in the list
-      for expense in expense_list:
+        for expense in expense_list:
         # Display each expense with amount and date
-        print(f"  - ${expense['amount']:.2f} on {expense['date']}")
+          print(f"  - ${expense['amount']:.2f} on {expense['date']}")
 
 def calculating_total_expenses():
-  user_input = input("please enter [food], [transport], [entertainment], or [total] to calculate).lower()
+  user_input = input("please enter [food], [transport], [entertainment], or [total] to calculate: ").lower()
   if user_input in expenses:
-    expense_total = sum(expenses[user_input])
-    print(f"Total for {user_input}: ${expense_total:.2f}")
+    expense_total = sum(expense["amount"] for expense in expenses[user_input])
+    print("---------------- ")
+    print(BOLD + f"Total for {user_input}: ${expense_total:.2f}" + RESET)
+    print("---------------- ")
 
- elif user_input == 'total':
-    total_total = sum(sum(values) for value in expense.values)
-    print(f"Total Expenses: ${total_total:.2f}")
+  elif user_input == 'total':
+   total_total = sum(sum(expense['amount'] for expense in expenses[category]) for category in expenses)
+   print("---------------- ")
+   print(BOLD + f"Total Expenses: ${total_total:.2f}" + RESET)
+   print("---------------- ")
 
-else:
-    print ("Please input a valid category!")
-    return
+  else:
+   print(RED + "Please input a valid category!" + RESET)
+   return
         
                  
 def deleting_expenses():
     category = input("Enter [food / transport / entertainment]: ").lower()
 
     if category not in expenses: 
-      print("Please enter a valid category!")
+      print(RED + "Please enter a valid category!" + RESET)
       return
 
     if not expenses[category]:
-      print("There are no expenses in this category!")
+      print(RED + "There are no expenses in this category!" + RESET)
       return
 
     for i, expense in enumerate(expenses[category], start =1):
-            print(f"{i}. ${expense['amount']}:.2f on {expense['date']}")
+            print(f"{i}. ${expense['amount']:.2f} on {expense['date']}")
 
     try:
       choice = int(input("Enter expense # to delete: "))
       removed = expenses[category].pop(choice-1)
+      print(GREEN + "Expense Removed!" + RESET)
 
     except (ValueError, IndexError):
-      print("Please enter a valid expense!")
+      print(RED + "Please enter a valid expense!" + RESET)
+
+def main_menu():
+  print(YELLOW+"Welcome to the Expense Tracker!"+RESET)
+  print ("")
+  print ("[1] Add expense ")
+  print ("[2] View All Expenses ")
+  print ("[3] Delete an Expense ")
+  print ("[4] Enter Calculator Mode")
+  print("[q] Quit")
+
+
+# Show menu
+while True:
+  main_menu()
+
+# Get user choice
+  choice = input(CYAN + "Select an option (1-4 or q): " + RESET)
+
+  if choice == "1":
+    add_expense()
+
+  elif choice == "2":
+    view_expenses()
+
+  elif choice == "3":
+    deleting_expenses ()
+
+  elif choice == "4":
+    calculating_total_expenses()
+
+  elif choice.lower() == "q":
+    print(GREEN + "Goodbye!" + RESET)
+    break
+    
+  else:
+    print(RED + "Invalid option. Please choose 1-4 or q." + RESET)
            
           
                  
+
 
 
 
