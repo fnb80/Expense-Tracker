@@ -1,5 +1,3 @@
-from ast import While
-
 
 RESET = "\033[0m"
 RED = "\033[91m"
@@ -67,47 +65,54 @@ def view_expenses():
         # Display each expense with amount and date
           print(f"  - ${expense['amount']:.2f} on {expense['date']}")
 
-def calculating_total_expenses():
+def calculating_total_expenses(): 
+  #get user input on which expense they would like to calculate
   user_input = input("please enter [food], [transport], [entertainment], or [total] to calculate: ").lower()
+  #check if category is in the expenses, if so, calculate total
   if user_input in expenses:
     expense_total = sum(expense["amount"] for expense in expenses[user_input])
     print("---------------- ")
     print(BOLD + f"Total for {user_input}: ${expense_total:.2f}" + RESET)
     print("---------------- ")
-
+  #if user wants to calculate every expense together, add every amount
   elif user_input == 'total':
    total_total = sum(sum(expense['amount'] for expense in expenses[category]) for category in expenses)
    print("---------------- ")
    print(BOLD + f"Total Expenses: ${total_total:.2f}" + RESET)
    print("---------------- ")
-
+  #if user inputs an invalid category
   else:
    print(RED + "Please input a valid category!" + RESET)
    return
         
                  
 def deleting_expenses():
+    #get user input on which category they want to delete from 
     category = input("Enter [food / transport / entertainment]: ").lower()
-
+    #once again check if the category is in that expense
     if category not in expenses: 
       print(RED + "Please enter a valid category!" + RESET)
       return
-
+    #check if there are no expenses in that category
     if not expenses[category]:
       print(RED + "There are no expenses in this category!" + RESET)
       return
-
+    #label each expense by a number for easy deleting
     for i, expense in enumerate(expenses[category], start =1):
             print(f"{i}. ${expense['amount']:.2f} on {expense['date']}")
 
+    #ask user to enter expense # to delete, then delete that #
     try:
       choice = int(input("Enter expense # to delete: "))
       removed = expenses[category].pop(choice-1)
       print(GREEN + "Expense Removed!" + RESET)
 
+    #If user inputs an invalid expense, reset
     except (ValueError, IndexError):
       print(RED + "Please enter a valid expense!" + RESET)
+      return
 
+#print main menu with all options
 def main_menu():
   print(YELLOW+"Welcome to the Expense Tracker!"+RESET)
   print ("")
@@ -146,6 +151,7 @@ while True:
            
           
                  
+
 
 
 
