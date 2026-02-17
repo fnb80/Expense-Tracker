@@ -47,46 +47,22 @@ def add_expense():
 def view_expenses():
   # Check if there are any expenses stored
   # If all categories are empty, show a message
-    if not expenses["food"] and not expenses["transport"] and not expenses["entertainment"]:
-        print(YELLOW + "No expenses have been added yet." + RESET)
-        return
+  if not expenses["food"] and not expenses["transport"] and not expenses["entertainment"]:
+    print(YELLOW + "No expenses have been added yet." + RESET)
+    return
 
   # Loop through each category and its expense list
-    for category, expense_list in expenses.items():
-      print(BOLD + CYAN + f"\nCategory: {category.capitalize()}" + RESET)
+  for category, expense_list in expenses.items():
+    print(BOLD + CYAN + f"\nCategory: {category.capitalize()}" + RESET)
 
     # If the category has no expenses, let the user know
-      if not expense_list:
-        print("  No expenses in this category.")
-      else:
+    if not expense_list:
+      print("  No expenses in this category.")
+    else:
       # Loop through each expense in the list
-        for expense in expense_list:
+      for expense in expense_list:
         # Display each expense with amount and date
-          print(f"  - ${expense['amount']:.2f} on {expense['date']}")
-
-def calculating_total_expenses():
-
-  #ask user which category they want to calculate, or the total
-  user_input = input("please enter [food], [transport], [entertainment], or [total] to calculate: ").lower()
-
-  #check if category is in expenses, if so, calculate total
-  if user_input in expenses:
-    expense_total = sum(expense["amount"] for expense in expenses[user_input])
-    print("---------------- ")
-    print(BOLD + f"Total for {user_input}: ${expense_total:.2f}" + RESET)
-    print("---------------- ")
-
-  #if user wants the calculate the total of everything, calculate
-  elif user_input == 'total':
-   total_total = sum(sum(expense['amount'] for expense in expenses[category]) for category in expenses)
-   print("---------------- ")
-   print(BOLD + f"Total Expenses: ${total_total:.2f}" + RESET)
-   print("---------------- ")
-
-#user error prevention in case they do not input a valid category
-  else:
-   print(RED + "Please input a valid category!" + RESET)
-   return
+        print(f"  - ${expense['amount']:.2f} on {expense['date']}")
         
                  
 def deleting_expenses():
@@ -158,6 +134,7 @@ while True:
            
           
                  
+
 
 
 
