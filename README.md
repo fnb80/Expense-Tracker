@@ -6,7 +6,7 @@ This is a user-friendly, operatable program that allows the user to create an ex
      
 Much of the code such as the *Add Expense, View Expense,* and *final checking* were developed by Eileen Wu, while *Delete Expense, Calculating Expenses* and *README* were written by Stephanie Cen.
 
-# Challenges  
+### Challenges  
 The biggest challenge during this project was when the project was passed along to the other member, and they had to dissect each line to make sure theirs added up. For example, as the last two functions were being worked on, every variable had to be carefully checked to ensure no confusion or bugs. We understand this is a very common problem within collaborative coding, so with communication and careful reading, we were able to overcome this issue. Communication when there was a problem with phrases like "I'll work on fixing ..." and "Okay, I can do ..." aided in completing the project in a satisfactory timeframe.
 
 ## How to Run
