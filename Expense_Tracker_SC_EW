@@ -63,7 +63,24 @@ def view_expenses():
       for expense in expense_list:
         # Display each expense with amount and date
         print(f"  - ${expense['amount']:.2f} on {expense['date']}")
-        
+
+def calculating_total_expenses():
+  user_input = input("please enter [food], [transport], [entertainment], or [total] to calculate: ").lower()
+  if user_input in expenses:
+    expense_total = sum(expense["amount"] for expense in expenses[user_input])
+    print("---------------- ")
+    print(BOLD + f"Total for {user_input}: ${expense_total:.2f}" + RESET)
+    print("---------------- ")
+
+  elif user_input == 'total':
+   total_total = sum(sum(expense['amount'] for expense in expenses[category]) for category in expenses)
+   print("---------------- ")
+   print(BOLD + f"Total Expenses: ${total_total:.2f}" + RESET)
+   print("---------------- ")
+
+  else:
+   print(RED + "Please input a valid category!" + RESET)
+   return
                  
 def deleting_expenses():
     #ask user which category they would like to delete from 
@@ -134,6 +151,7 @@ while True:
            
           
                  
+
 
 
 
